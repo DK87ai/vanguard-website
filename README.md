@@ -31,3 +31,13 @@ If a mark reads too big or too small next to the others, set its size in `LOGO_S
 | Krafton | `krafton.svg` |
 | Moonton | `moonton.svg` |
 | Embark Studios | `embark-studios.svg` |
+
+### Current logo files
+
+| File | Source | Note |
+| --- | --- | --- |
+| `esports-world-cup-foundation.png`, `saudi-esports-federation.png`, `misk-foundation.png` | vanguard.com.sa | Good resolution |
+| `savvy-games-group.png`, `stc-play.png`, `global-esports-federation.png`, `saudi-arabian-football-federation.png`, `international-esports-federation.png`, `riot-games.png` | vanguard.com.sa | Small (about 150px wide), soft on high-resolution screens: replace with SVGs from each organisation |
+| `blizzard-entertainment.svg`, `electronic-arts.svg`, `ubisoft.svg` | Wikimedia Commons | Vector |
+
+Still needed: Saudi Sports for All Federation, West Asian Football Federation, National Events Center, King Abdulaziz City for Science and Technology, Tencent Games, Epic Games (a single-colour version: the standard shield logo loses its lettering), Krafton, Moonton, Embark Studios.

@@ -148,7 +148,7 @@ a:hover > .arrow,.btn:hover .arrow,a:hover .tlink .arrow{transform:translateX(4p
 
 /* Logos: one slot per organisation. img/logos/<slug>.svg (or .png) replaces the typed name when present. */
 .lg{display:flex;align-items:center;justify-content:center;block-size:var(--lg-h,44px);min-inline-size:0}
-.lg img{display:block;block-size:calc(var(--lg-h,44px) * var(--s,1));inline-size:auto;max-inline-size:100%;object-fit:contain;filter:brightness(0) invert(1);opacity:.78;transition:opacity .2s}
+.lg img{display:block;block-size:calc(var(--lg-h,44px) * var(--s,1) * var(--n,1));inline-size:auto;max-inline-size:100%;object-fit:contain;filter:brightness(0) invert(1);opacity:.78;transition:opacity .2s}
 .lg:hover img,a:hover .lg img{opacity:1}
 .bone .lg img{filter:brightness(0);opacity:.85}
 .lg-name{display:none;font-family:var(--display);font-stretch:100%;font-weight:600;font-size:.95rem;line-height:1.2;letter-spacing:.01em;color:#cfc8c4;text-align:center;text-wrap:balance}
@@ -612,9 +612,11 @@ const POSTS=[['Event recap','Esports World Cup 2025 in numbers','Three million v
 const svc=s=>S.find(x=>x.slug===s), cs=s=>C.find(x=>x.slug===s);
 /* Logo files: img/logos/<slug>.svg, falling back to .png, then to the typed name.
    Optional optical size per logo (1 = default height), for marks that read too big or small. */
-const LOGO_SCALE={};
+const LOGO_SCALE={'stc-play':.82,'esports-world-cup-foundation':1.15,'saudi-arabian-football-federation':1.2,'misk-foundation':1.25};
+/* Files already in img/logos (others are still tried as .svg then .png). */
+const LOGO_FILES={'esports-world-cup-foundation':'png','savvy-games-group':'png','saudi-esports-federation':'png','stc-play':'png','global-esports-federation':'png','saudi-arabian-football-federation':'png','international-esports-federation':'png','misk-foundation':'png','riot-games':'png','blizzard-entertainment':'svg','electronic-arts':'svg','ubisoft':'svg'};
 const slugify=n=>n.toLowerCase().replace(/&amp;|&/g,'and').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
-const logo=n=>{const k=slugify(n);return `<span class="lg" style="--s:${LOGO_SCALE[k]||1}"><img src="img/logos/${k}.svg" alt="${n}" data-logo="${k}"><span class="lg-name" aria-hidden="true">${n}</span></span>`};
+const logo=n=>{const k=slugify(n);return `<span class="lg" style="--s:${LOGO_SCALE[k]||1}"><img src="img/logos/${k}.${LOGO_FILES[k]||'svg'}" alt="${n}" data-logo="${k}"><span class="lg-name" aria-hidden="true">${n}</span></span>`};
 const TRUST=['Esports World Cup Foundation','Savvy Games Group','Saudi Esports Federation','stc play','Global Esports Federation','Saudi Arabian Football Federation'];
 
 /* ---------- Helpers ---------- */
@@ -946,6 +948,9 @@ document.addEventListener('submit',e=>{e.preventDefault();
   if(e.target.id==='contactForm')fakeSend(e.target,document.getElementById('contactOut'),['c-name','c-email']);
   if(e.target.id==='spaceForm')fakeSend(e.target,document.getElementById('spaceOut'),['sp-name','sp-email']);
 });
+/* Balance logos of different shapes: wide wordmarks sit lower, compact marks taller. */
+document.addEventListener('load',e=>{const im=e.target;if(!im.dataset||!im.dataset.logo||!im.naturalWidth)return;
+  const r=im.naturalWidth/im.naturalHeight;im.style.setProperty('--n',Math.min(1.2,Math.max(.5,Math.sqrt(2.5/r))).toFixed(3))},true);
 document.addEventListener('error',e=>{const im=e.target;if(!im.dataset||!im.dataset.logo)return;
   if(im.src.endsWith('.svg')){im.src=`img/logos/${im.dataset.logo}.png`}else{im.closest('.lg').classList.add('txt')}},true);
 window.addEventListener('hashchange',()=>{wf={svc:'all',type:'all'};route()});
