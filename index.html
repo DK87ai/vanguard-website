@@ -3,7 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vanguard Website</title>
+<base href="/">
+<title>Vanguard | Esports and gaming agency, Saudi Arabia</title>
+<meta name="description" content="Vanguard is the full-service esports and gaming agency built in Saudi Arabia: strategy, tournaments, live events, broadcast, brand partnerships, creators and our own venue.">
+<meta name="theme-color" content="#0a0909">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="canonical" href="/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Vanguard">
+<meta property="og:title" content="Vanguard | Esports and gaming agency, Saudi Arabia">
+<meta property="og:description" content="One partner. Every part of the game. Strategy, tournaments, live events, broadcast, partnerships, creators and our own venue.">
+<meta property="og:image" content="/img/share.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Readex+Pro:wght@200..700&display=swap" rel="stylesheet">
@@ -316,6 +330,7 @@ a:hover > .arrow,.btn:hover .arrow,a:hover .tlink .arrow{transform:translateX(4p
 /* Split blocks */
 .split{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(28px,5vw,80px);align-items:center}
 .split.top{align-items:start}
+.split .h2{font-size:clamp(1.7rem,3.5vw,3.4rem)}
 @media (max-width:860px){.split{grid-template-columns:1fr}}
 .stack{display:flex;flex-direction:column;gap:20px}
 .stack-lg{display:flex;flex-direction:column;gap:clamp(28px,4vw,48px)}
@@ -339,6 +354,8 @@ a:hover > .arrow,.btn:hover .arrow,a:hover .tlink .arrow{transform:translateX(4p
 .close{position:relative;isolation:isolate;overflow:hidden;clip-path:polygon(0 var(--cut),100% 0,100% 100%,0 100%);margin-block-start:calc(var(--cut) * -1)}
 [dir=rtl] .close{clip-path:polygon(0 0,100% var(--cut),100% 100%,0 100%)}
 .close img.bg{position:absolute;inset:0;inline-size:100%;block-size:100%;object-fit:cover;z-index:-2}
+.close-row{inline-size:100%;display:grid;grid-template-columns:minmax(0,52ch) auto;justify-content:space-between;align-items:end;gap:24px 48px;padding-block-start:clamp(20px,2.4vw,32px);border-block-start:1px solid rgba(244,240,234,.22)}
+@media (max-width:820px){.close-row{grid-template-columns:1fr;border:0;padding:0}}
 .close::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(10,9,9,.6) 0%,rgba(10,9,9,.35) 40%,rgba(10,9,9,.88) 100%)}
 .close-in{padding-block:clamp(120px,16vw,220px) clamp(72px,10vw,140px);display:flex;flex-direction:column;gap:26px;align-items:flex-start}
 .close-in .h1{font-size:clamp(1.9rem,8.4vw,8rem);max-inline-size:13ch;overflow-wrap:break-word}
@@ -417,7 +434,7 @@ td.tc{color:var(--mute)}
 .people{display:grid;grid-template-columns:repeat(6,1fr);gap:clamp(10px,1.4vw,20px)}
 @media (max-width:1000px){.people{grid-template-columns:repeat(3,1fr)}}
 @media (max-width:520px){.people{grid-template-columns:repeat(2,1fr)}}
-.person img{aspect-ratio:4/5;object-fit:cover;inline-size:100%;filter:grayscale(1) contrast(1.05);transition:filter .4s}
+.person img{aspect-ratio:4/5;object-fit:cover;inline-size:100%;block-size:auto;filter:grayscale(1) contrast(1.05);transition:filter .4s}
 .person:hover img{filter:none}
 .person h3{font-family:var(--display);font-stretch:108%;font-weight:700;font-size:.98rem;margin-block-start:12px;line-height:1.2}
 .person p{font-size:.82rem;color:var(--mute);line-height:1.35;margin-block-start:3px}
@@ -460,6 +477,82 @@ footer{background:var(--ink)}
 .foot a:hover{color:#fff;text-decoration:underline;text-decoration-color:var(--red);text-underline-offset:5px}
 .foot-base{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding-block:20px;background:linear-gradient(var(--line),var(--line)) no-repeat 0 0/100% 1px;background-origin:content-box;font-size:.8rem;color:var(--mute)}
 @media (max-width:820px){.foot{grid-template-columns:repeat(2,1fr)}.foot > div:first-child{grid-column:1 / -1}}
+/* Page hero: the lead picture opens through the slot with the title over it */
+.phero{position:relative;min-block-size:min(84svh,860px);display:flex;align-items:flex-end;overflow:hidden;isolation:isolate;background:var(--ink);clip-path:polygon(0 0,100% 0,100% 100%,0 calc(100% - var(--cut)))}
+[dir=rtl] .phero{clip-path:polygon(0 0,100% 0,100% calc(100% - var(--cut)),0 100%)}
+.phero-media{position:absolute;inset:0;z-index:-2;will-change:transform}
+.phero-media img{inline-size:100%;block-size:100%;object-fit:cover;animation:visor 1.5s cubic-bezier(.76,0,.18,1) .3s both,settle 5s cubic-bezier(.2,.6,.2,1) .3s both}
+.phero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(10,9,9,.5) 0%,rgba(10,9,9,.12) 28%,rgba(10,9,9,.5) 58%,rgba(10,9,9,.95) 100%),linear-gradient(90deg,rgba(10,9,9,.55),rgba(10,9,9,0) 70%)}
+[dir=rtl] .phero::after{transform:scaleX(-1)}
+.phero-in{inline-size:100%;display:flex;flex-direction:column;gap:20px;padding-block:clamp(96px,12vw,160px) calc(var(--cut) + clamp(32px,4vw,56px))}
+.phero-in > *{animation:rise .9s cubic-bezier(.2,.7,.2,1) .8s both}
+.phero-in > :nth-child(2){animation-delay:.88s}
+.phero-in > :nth-child(3){animation-delay:.96s}
+.phero-in > :nth-child(n+4){animation-delay:1.04s}
+.phero .h1{font-size:clamp(2.05rem,6vw,6.2rem);max-inline-size:18ch}
+.phero .lede{color:#ebe5e0}
+.phero .crumb,.phero .eyebrow{color:rgba(244,240,234,.82)}
+@keyframes visor{from{clip-path:polygon(0 47%,100% 53%,100% 53%,0 47%)}to{clip-path:polygon(0 -8%,100% 0,100% 108%,0 100%)}}
+
+/* Work index: large staggered cards */
+.wgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(48px,6vw,96px) clamp(24px,3.4vw,56px);align-items:start}
+.wcard{display:flex;flex-direction:column;gap:18px;animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
+.wcard:nth-child(2){animation-delay:.08s}.wcard:nth-child(3){animation-delay:.16s}.wcard:nth-child(n+4){animation-delay:.24s}
+.wcard:nth-child(even){margin-block-start:clamp(40px,7vw,120px)}
+.wcard-img{position:relative;aspect-ratio:16/11;overflow:hidden;background:var(--ink-3);--cut:clamp(12px,1.8vw,26px)}
+.wcard-img img{inline-size:100%;block-size:100%;object-fit:cover;transition:transform 1s cubic-bezier(.2,.7,.2,1)}
+.wcard:hover .wcard-img img{transform:scale(1.045)}
+.wcard-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(10,9,9,.6));pointer-events:none}
+.wcard-n{position:absolute;inset-inline-end:clamp(14px,1.8vw,26px);inset-block-end:calc(var(--cut) + 6px);z-index:1;font-family:var(--display);font-stretch:125%;font-weight:800;font-size:clamp(2.6rem,5.4vw,5rem);line-height:.8;letter-spacing:-.04em;color:transparent;-webkit-text-stroke:1.2px rgba(244,240,234,.7)}
+.wcard-body{display:flex;flex-direction:column;gap:10px}
+.wcard-h{font-size:clamp(1.5rem,2.9vw,2.7rem);line-height:.98}
+.wcard:hover .wcard-h{color:#fff}
+.wcard-tags{display:flex;flex-wrap:wrap;gap:6px;margin-block-start:6px}
+@media (max-width:760px){.wgrid{grid-template-columns:1fr}.wcard:nth-child(even){margin-block-start:0}}
+
+/* Next case: one more full-bleed picture before the close */
+.nextc{position:relative;display:block;min-block-size:min(70svh,640px);isolation:isolate;overflow:hidden;color:var(--bone);clip-path:polygon(0 var(--cut),100% 0,100% 100%,0 100%)}
+.nextc-media{position:absolute;inset:0;z-index:-2}
+.nextc-media img{inline-size:100%;block-size:100%;object-fit:cover;transition:transform 1.4s cubic-bezier(.2,.7,.2,1)}
+.nextc:hover .nextc-media img{transform:scale(1.04)}
+.nextc::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(10,9,9,.6),rgba(10,9,9,.3) 40%,rgba(10,9,9,.92))}
+.nextc-in{min-block-size:inherit;display:flex;flex-direction:column;justify-content:flex-end;gap:16px;padding-block:calc(var(--cut) + 48px) calc(var(--cut) + clamp(40px,5vw,72px))}
+.nextc-h{font-size:clamp(1.95rem,7vw,7rem);line-height:.9;max-inline-size:14ch}
+.nextc .eyebrow{color:var(--bone)}
+
+/* Gallery captions and the full-screen viewer */
+.gallery figure{position:relative;cursor:zoom-in}
+.gallery figure img{transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.gallery figure:hover img,.gallery figure:focus-visible img{transform:scale(1.035)}
+.gallery figcaption{position:absolute;inset-inline:0;inset-block-end:0;padding:40px 18px 14px;background:linear-gradient(180deg,transparent,rgba(10,9,9,.85));font-size:.86rem;display:flex;align-items:center;gap:10px;opacity:0;transform:translateY(8px);transition:opacity .3s,transform .3s}
+.gallery figure:hover figcaption,.gallery figure:focus-visible figcaption{opacity:1;transform:none}
+@media (hover:none){.gallery figcaption{opacity:1;transform:none}}
+.lb{position:fixed;inset:0;z-index:150;background:rgba(10,9,9,.96);display:grid;grid-template-rows:auto 1fr auto;padding:clamp(14px,2.4vw,32px);gap:14px}
+.lb[hidden]{display:none}
+.lb-bar{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.lb-n{font-family:var(--display);font-stretch:112%;font-weight:700;font-size:.74rem;letter-spacing:.14em;font-variant-numeric:tabular-nums}
+.lb-n b{color:var(--red);font-weight:700}
+.lb-stage{min-block-size:0;display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:clamp(8px,1.6vw,24px)}
+.lb-stage img{max-inline-size:100%;max-block-size:100%;inline-size:auto;block-size:auto;margin:auto;object-fit:contain;min-block-size:0}
+.lb-pic{block-size:100%;min-block-size:0;display:flex}
+.lb-cap{display:flex;align-items:center;gap:10px;color:var(--mute);font-size:.92rem}
+.lb button{background:none;border:1px solid var(--line);color:var(--bone);cursor:pointer;font-family:var(--display);font-stretch:112%;font-weight:700;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;padding:12px 16px;transition:background .2s,color .2s}
+.lb button:hover{background:var(--bone);color:var(--ink)}
+@media (max-width:640px){.lb-stage{grid-template-columns:1fr 1fr;grid-template-rows:1fr auto}.lb-pic{grid-column:1 / -1;grid-row:1}}
+
+/* People: the slot again, mirrored down the row */
+.person img{clip-path:polygon(0 0,100% 12px,100% 100%,0 calc(100% - 12px))}
+.person:nth-child(even) img{clip-path:polygon(0 12px,100% 0,100% calc(100% - 12px),0 100%)}
+
+/* Headlines that rise line by line once they scroll into view */
+.lr .ln > span{animation:none;transform:translateY(112%);transition:transform 1.05s cubic-bezier(.2,.8,.2,1);transition-delay:calc(var(--l,0) * .11s)}
+.lr.in .ln > span{transform:none}
+.bone .lede{color:var(--ink)}
+
+/* Footer: the line, outlined and running */
+.foot-run{overflow:hidden;direction:ltr;padding-block:clamp(18px,2.6vw,36px);background:linear-gradient(var(--line),var(--line)) no-repeat 0 0/100% 1px}
+.foot-run-in{display:flex;align-items:center;gap:.5em;inline-size:max-content;padding-inline-end:.5em;animation:run 80s linear infinite;font-family:var(--display);font-stretch:125%;font-weight:800;font-size:clamp(3rem,10.5vw,10rem);line-height:1;text-transform:uppercase;letter-spacing:-.02em;white-space:nowrap;color:transparent;-webkit-text-stroke:1px rgba(244,240,234,.3)}
+.foot-run .glyph{inline-size:.5em;block-size:.4em}
 /* Pictures open like the visor */
 .rv-slot{transition:clip-path 1.25s cubic-bezier(.76,0,.18,1)}
 .rv-slot:not(.in){clip-path:polygon(0 47%,100% 53%,100% 53%,0 47%)}
@@ -486,7 +579,7 @@ body::after{content:"";position:fixed;inset:0;z-index:300;pointer-events:none;op
 </style>
 </head>
 <body>
-<a class="skip" href="#home" id="skip">Skip to content</a>
+<a class="skip" href="/" id="skip">Skip to content</a>
 <header class="nav" id="nav">
   <div class="wrap nav-in">
     <a class="logo" href="#home" aria-label="Vanguard home"><img src="img/logo.png" alt="Vanguard" width="689" height="231"></a>
@@ -551,10 +644,12 @@ body::after{content:"";position:fixed;inset:0;z-index:300;pointer-events:none;op
       </div>
     </div>
   </div>
+  <div class="foot-run" aria-hidden="true"><div class="foot-run-in"><span>One partner</span><i class="glyph"></i><span>Every part of the game</span><i class="glyph"></i><span>One partner</span><i class="glyph"></i><span>Every part of the game</span><i class="glyph"></i><span>One partner</span><i class="glyph"></i><span>Every part of the game</span><i class="glyph"></i><span>One partner</span><i class="glyph"></i><span>Every part of the game</span><i class="glyph"></i></div></div>
   <div class="wrap foot-base"><span>© 2026 Vanguard. All rights reserved.</span><span>Saudi Arabia</span></div>
 </footer>
 <div class="wipe" id="wipe" aria-hidden="true"><i></i><i></i></div>
 <div class="peek" id="peek" aria-hidden="true"><img alt=""></div>
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Gallery" hidden><div class="lb-bar"><span class="lb-n"><b id="lbI">01</b> / <span id="lbT">01</span></span><button type="button" id="lbX">Close</button></div><div class="lb-stage"><button type="button" id="lbP" aria-label="Previous picture">Prev</button><div class="lb-pic"><img id="lbImg" alt=""></div><button type="button" id="lbN" aria-label="Next picture">Next</button></div><p class="lb-cap"><span class="glyph"></span><span id="lbC"></span></p></div>
 
 <script>
 /* ---------- Content ---------- */
@@ -675,6 +770,18 @@ const LEAD=[['alotaibi','Mohammed AlOtaibi','Chairman and Founder'],['almubayedh
 const CORE=[['nasser','Mohammed Nasser','Executive Producer'],['allawi','Mohammed Allawi','Art Director'],['alfuhaid','Faisal Alfuhaid','Media Producer'],['fisayel','Faisal Fisayel','Head of Esports'],['benothman','Mahmoud Ben Othman','Esports Programme Manager'],['alorwan','Abdulaziz Alorwan','Project and Operations Manager']];
 const POSTS=[['Event recap','Esports World Cup 2025 in numbers','Three million visitors, nine venues and parks, and what the footfall says about how fans move through a festival.','ewc-floor'],['Competition','Six seasons of Saudi eLeague','What operating a national league from 2020 to 2025 taught us about formats, integrity and broadcast.','el-floor'],['Behind the scenes','Hosting 52 nations at WEC24','Qualifiers, referees and a nine-day schedule at SEF Arena.','wec-floor']];
 const svc=s=>S.find(x=>x.slug===s), cs=s=>C.find(x=>x.slug===s);
+/* Every page has its own address: /about, /services/strategy, /work/esports-world-cup. Templates write #slug and relink() turns it into the address. */
+const path=s=>!s||s==='home'?'/':svc(s)?'/services/'+s:cs(s)?'/work/'+s:'/'+s;
+const here=()=>{const seg=location.pathname.split('/').filter(Boolean),s=seg[seg.length-1]||'home';return s==='index.html'?'home':s};
+const relink=root=>(root||document).querySelectorAll('a[href^="#"]').forEach(a=>a.setAttribute('href',path(a.getAttribute('href').slice(1))));
+const TITLE0=document.title,DESC0=document.querySelector('meta[name=description]').content;
+const META={about:['About','Founded in 2018, Vanguard is the end-to-end partner for esports, gaming and live experiences in Saudi Arabia.'],services:['Services','Seven services that work as one cycle, from the first strategy session to the content that follows the live moment.'],work:['Work','Case studies from the Kingdom’s largest gaming and esports projects.'],partners:['Partners','Federations, foundations, publishers and brands Vanguard has delivered for.'],space:['Space','Vanguard’s own venue and production studio in Saudi Arabia, for hire.'],insights:['Insights','News, event recaps and notes on the Saudi and MENA esports market.'],careers:['Careers','Join the team behind the Kingdom’s biggest gaming moments.'],contact:['Contact','Tell us what you are planning. We reply within one business day.'],privacy:['Privacy','How Vanguard handles enquiry, analytics and cookie data.']};
+function setMeta(h){
+  const s=svc(h),c=cs(h),m=META[h],t=s?s.name:c?c.title:m?m[0]:'',d=s?s.line:c?c.outcome:m?m[1]:DESC0,url=location.origin+path(P[h]||s||c?h:'home');
+  document.title=t?t+' | Vanguard':TITLE0;
+  const set=(q,a,v)=>{const el=document.querySelector(q);if(el)el.setAttribute(a,v)};
+  set('meta[name=description]','content',d);set('meta[property="og:title"]','content',document.title);set('meta[property="og:description"]','content',d);set('meta[property="og:image"]','content',location.origin+'/img/share.jpg');set('link[rel=canonical]','href',url);
+}
 /* Logo files: img/logos/<slug>.svg, falling back to .png, then to the typed name.
    Optional optical size per logo (1 = default height), for marks that read too big or small. */
 const LOGO_SCALE={'stc-play':.82,'esports-world-cup-foundation':1.15,'saudi-arabian-football-federation':1.2,'misk-foundation':1.25};
@@ -693,7 +800,7 @@ const img=(n,alt,eager)=>`<img src="img/${n}.webp" alt="${alt}" ${eager?'':'load
 const fpo=(t,extra='')=>`<div class="fpo" ${extra}><span class="tag">To supply</span><p>${t}</p></div>`;
 const arrow='<span class="arrow" aria-hidden="true">→</span>';
 const card=c=>`<a class="card" href="#${c.slug}"><div class="card-img">${img(c.hero,c.alt)}</div><div class="card-body"><div class="card-meta"><span>${c.client}</span><span>${c.years}</span></div><h3 class="d h3">${c.title}</h3><p class="card-out">${c.outcome}</p></div></a>`;
-const closing=(h='Let’s build your next event',ar='لنبنِ فعاليتك القادمة')=>`<section class="close"><img class="bg" src="img/fireworks.webp" alt="" loading="lazy"><div class="wrap close-in"><p class="eyebrow" data-ar="ابدأ مشروعك">Start a project</p><h2 class="d h1" data-ar="${ar}">${h}<i class='dot'>.</i></h2><p class="lede">Tell us what you are planning. We reply within one business day.</p><div class="cta-row"><a class="btn btn-red" href="#contact" data-enq="Business"><span data-ar="ابدأ مشروعك">Start a project</span> ${arrow}</a><a class="btn" href="mailto:hello@vanguard7.com">hello@vanguard7.com</a></div></div></section>`;
+const closing=(h=['Let’s build','your next','event.'],ar='لنبنِ فعاليتك القادمة.')=>`<section class="close"><img class="bg" src="img/fireworks.webp" alt="" loading="lazy"><div class="wrap close-in"><p class="eyebrow" data-ar="ابدأ مشروعك">Start a project</p><h2 class="d h1" data-lr data-ar="${lines([ar])}">${lines(h)}</h2><div class="close-row"><p class="lede">Tell us what you are planning. We reply within one business day.</p><div class="cta-row"><a class="btn btn-red" href="#contact" data-enq="Business"><span data-ar="ابدأ مشروعك">Start a project</span> ${arrow}</a><a class="btn" href="mailto:hello@vanguard7.com">hello@vanguard7.com</a></div></div></div></section>`;
 const dot=t=>t.replace(/\.$/,"<i class='dot'>.</i>");
 const lines=a=>a.map((t,i)=>`<span class='ln' style='--l:${i}'><span>${dot(t)}</span></span>`).join('');
 const ticker=()=>{const run=S.map(x=>`<span data-ar="${x.arS}">${x.short}</span><i class="glyph"></i>`).join('');return `<div class="tick" aria-hidden="true"><div class="tick-rot"><div class="tick-in">${run+run+run+run}</div></div></div>`};
@@ -708,6 +815,9 @@ const panel=i=>{const s=S[i];return `<p class="panel-n">0${i+1} / 07</p><h3 clas
 const svcRows=()=>`<ol class="svc-rows">${S.map((s,i)=>`<li><a class="svc-row" href="#${s.slug}" data-peek="${s.img}"><span class="n">0${i+1}</span><h3 class="d h3" data-ar="${s.ar}">${s.name}</h3><p>${s.line}</p>${arrow}</a></li>`).join('')}</ol>`;
 const system=(list)=>`<div class="sys"><div class="sys-copy"><div class="panel">${panel(0)}</div></div>${ring()}</div>${list?`<div style="margin-block-start:clamp(40px,6vw,80px)">${svcRows()}</div>`:`<div class="only-m">${svcRows()}</div>`}`;
 const people=(arr)=>`<ul class="people">${arr.map(p=>`<li class="person"><img src="img/p-${p[0]}.webp" alt="${p[1]}" loading="lazy" width="480" height="600"><h3>${p[1]}</h3><p>${p[2]}</p></li>`).join('')}</ul>`;
+const phero=(im,alt,eb,h,lede,crumb,ebAr,hAr)=>`<header class="phero"><div class="phero-media">${img(im,alt,1)}</div><div class="wrap phero-in">${crumb?`<p class="crumb">${crumb}</p>`:''}<p class="eyebrow" ${ebAr?`data-ar="${ebAr}"`:''}>${eb}</p><h1 class="d h1" ${hAr?`data-ar="${hAr}"`:''}>${dot(h)}</h1>${lede?`<p class="lede">${lede}</p>`:''}</div></header>`;
+const wcard=(c,i)=>`<a class="wcard" href="#${c.slug}"><div class="wcard-img ${i%2?'slot-r':'slot'}">${img(c.hero,c.alt)}<span class="wcard-n" aria-hidden="true">${String(i+1).padStart(2,'0')}</span></div><div class="wcard-body"><div class="card-meta"><span>${c.client}</span><span>${c.years}</span></div><h3 class="d wcard-h">${c.title} ${arrow}</h3><p class="card-out">${c.outcome}</p><div class="wcard-tags">${c.svcs.map(x=>`<span class="chip">${svc(x).short}</span>`).join('')}</div></div></a>`;
+const nextCase=n=>`<a class="nextc" href="#${n.slug}"><div class="nextc-media">${img(n.hero,n.alt)}</div><div class="wrap nextc-in"><p class="eyebrow">Next case study</p><h2 class="d nextc-h">${n.title} ${arrow}</h2><p class="lede">${n.outcome}</p></div></a>`;
 const head=(eb,h,lede,crumb,ebAr,hAr)=>`<header class="wrap ph">${crumb?`<p class="crumb">${crumb}</p>`:''}<p class="eyebrow" ${ebAr?`data-ar="${ebAr}"`:''}>${eb}</p><h1 class="d h1" ${hAr?`data-ar="${hAr}"`:''}>${dot(h)}</h1>${lede?`<p class="lede">${lede}</p>`:''}</header>`;
 
 /* ---------- Pages ---------- */
@@ -771,8 +881,7 @@ ${closing()}`;
 function postCard(p){return `<article class="card"><div class="card-img">${img(p[3],'')}</div><div class="card-body"><div class="card-meta"><span>${p[0]}</span></div><h3 class="d h3">${p[1]}</h3><p class="card-out">${p[2]}</p><span class="tag tag-q" style="margin-block-start:auto">Planned for launch</span></div></article>`}
 
 P.about=()=>`
-${head('About us','Built from the community. Trusted across the ecosystem.','Vanguard is the end-to-end partner for esports, gaming and live experiences in Saudi Arabia. We were founded in 2018 and have been inside the Kingdom’s biggest gaming moments since.','','من نحن')}
-<div class="wide-img slot">${img('arena-figure','Vanguard brand artwork: a figure standing in an arena',1)}</div>
+${phero('arena-figure','Vanguard brand artwork: a figure standing in an arena','About us','Built from the community. Trusted across the ecosystem.','Vanguard is the end-to-end partner for esports, gaming and live experiences in Saudi Arabia. We were founded in 2018 and have been inside the Kingdom’s biggest gaming moments since.','','من نحن')}
 <section class="sec wrap"><div class="split top">
   <div class="stack"><p class="eyebrow">Our story</p><h2 class="d h2">From running events to running the whole thing.</h2></div>
   <div class="stack body">
@@ -789,7 +898,7 @@ ${head('About us','Built from the community. Trusted across the ecosystem.','Van
   <li><span class="num">2024</span><p>Masterplanner of the first Esports World Cup. Lead operator of IESF WEC24, with 52 nations at SEF Arena.</p></li>
   <li><span class="num">2025</span><p>The second Esports World Cup: 3M+ visitors, nine venues and parks, a prize pool above $70M.</p></li>
 </ol></section>
-<section class="sec wrap"><div class="split top">
+<section class="band bone"><div class="wrap split top">
   <div class="stack"><p class="eyebrow">Mission and values</p><p class="lede">Our mission is to set the standard for gaming and esports in Saudi Arabia, working with regional and global partners and in step with the National Gaming and Esports Strategy.</p></div>
   <div class="how" style="grid-template-columns:1fr">
     <div><h3 class="d h3">Innovation</h3><p class="mute">We challenge the norm.</p></div>
@@ -821,8 +930,7 @@ ${head('Services','One partner. Every part of the game.','Seven services that wo
 ${closing()}`;
 
 function servicePage(s){const i=S.indexOf(s),next=S[(i+1)%7];return `
-${head(`0${i+1} / 07`,s.name,s.line,`<a href="#services">Services</a><span>/</span><span>${s.short}</span>`,'',s.ar)}
-${s.img?`<div class="wide-img slot">${img(s.img,s.alt,1)}</div>`:`<div class="wrap">${fpo(s.need,'style="aspect-ratio:21/9"')}</div>`}
+${s.img?phero(s.img,s.alt,`0${i+1} / 07`,s.name,s.line,`<a href="#services">Services</a><span>/</span><span>${s.short}</span>`,'',s.ar):head(`0${i+1} / 07`,s.name,s.line,`<a href="#services">Services</a><span>/</span><span>${s.short}</span>`,'',s.ar)+`<div class="wrap">${fpo(s.need,'style="aspect-ratio:21/9"')}</div>`}
 <section class="sec wrap"><div class="split top">
   <div class="stack"><p class="eyebrow">What we do</p><p class="lede">${s.what}</p>${s.proof?`<p class="proof">${s.proof}</p>`:''}${s.slug==='venue-studio'?`<div class="cta-row"><a class="btn" href="#space">See the space ${arrow}</a></div>`:''}</div>
   <div class="stack"><p class="eyebrow">Capabilities</p><ul class="caps">${s.caps.map(c=>`<li>${c}</li>`).join('')}</ul></div>
@@ -835,10 +943,10 @@ ${s.cases.length?`<section class="sec wrap"><div class="sec-head"><div><p class=
   ${s.need?`<div style="margin-block-start:24px">${fpo(s.need)}</div>`:''}
 </section>`:''}
 <section class="wrap" style="padding-block-end:var(--sec)"><a class="svc-row" href="#${next.slug}" data-peek="${next.img||next.hero||''}" style="border-block-start:1px solid var(--line)"><span class="n">Next</span><h3 class="d h3">${next.name}</h3><p>${next.line}</p>${arrow}</a></section>
-${closing('Let’s talk about '+s.short.toLowerCase(),'لنتحدث عن مشروعك')}`}
+${closing(['Let’s talk about',s.short.toLowerCase()+'.'],'لنتحدث عن مشروعك.')}`}
 
 let wf={svc:'all',type:'all'};
-const workGrid=()=>{const list=C.filter(c=>(wf.svc==='all'||c.svcs.includes(wf.svc))&&(wf.type==='all'||c.type.includes(wf.type)));return list.length?list.map(card).join(''):'<p class="mute">No case studies match both filters yet.</p>'};
+const workGrid=()=>{const list=C.filter(c=>(wf.svc==='all'||c.svcs.includes(wf.svc))&&(wf.type==='all'||c.type.includes(wf.type)));return list.length?list.map(wcard).join(''):'<p class="mute">No case studies match both filters yet.</p>'};
 P.work=()=>{const types=[...new Set(C.flatMap(c=>c.type))];return `
 ${head('Work','Proven. Delivered. Remembered.','Case studies from the Kingdom’s largest gaming and esports projects. Filter by the service we delivered or the kind of client we delivered it for.','','أعمالنا')}
 <section class="wrap">
@@ -846,7 +954,7 @@ ${head('Work','Proven. Delivered. Remembered.','Case studies from the Kingdom’
     <div class="frow" data-f="svc"><span class="fl">Service</span><button class="fbtn" data-v="all" aria-pressed="true">All</button>${S.filter(s=>C.some(c=>c.svcs.includes(s.slug))).map(s=>`<button class="fbtn" data-v="${s.slug}" aria-pressed="false">${s.short}</button>`).join('')}</div>
     <div class="frow" data-f="type"><span class="fl">Client type</span><button class="fbtn" data-v="all" aria-pressed="true">All</button>${types.map(t=>`<button class="fbtn" data-v="${t}" aria-pressed="false">${t}</button>`).join('')}</div>
   </div>
-  <div class="grid3" id="workGrid">${workGrid()}</div>
+  <div class="wgrid" id="workGrid">${workGrid()}</div>
 </section>
 <section class="sec wrap" style="padding-block-start:var(--sec)"><div class="sec-head"><div><p class="eyebrow">Also delivered</p><h2 class="d h2">More from the portfolio.</h2></div><span class="tag">Case-study detail to supply, Move to Game first</span></div>
   <div class="tbl-wrap"><table><thead><tr><th>Project</th><th>Client</th><th>Years</th></tr></thead><tbody>${MORE.map(m=>`<tr><td>${m[0]}</td><td class="tc">${m[1]}</td><td class="tc">${m[2]}</td></tr>`).join('')}</tbody></table></div>
@@ -854,8 +962,7 @@ ${head('Work','Proven. Delivered. Remembered.','Case studies from the Kingdom’
 ${closing()}`};
 
 function casePage(c){const i=C.indexOf(c),next=C[(i+1)%C.length];return `
-${head(c.client,c.title,c.outcome,`<a href="#work">Work</a><span>/</span><span>${c.title}</span>`)}
-<div class="wide-img slot">${img(c.hero,c.alt,1)}</div>
+${phero(c.hero,c.alt,c.client,c.title,c.outcome,`<a href="#work">Work</a><span>/</span><span>${c.title}</span>`)}
 <section class="wrap" style="padding-block-start:clamp(28px,4vw,48px)"><dl class="facts"><div><dt>Client</dt><dd>${c.client}</dd></div><div><dt>${c.slug==='ignite'?'Held at':'When'}</dt><dd>${c.years}</dd></div><div><dt>Our role</dt><dd>${c.role}</dd></div><div><dt>Services</dt><dd>${c.svcs.map(s=>svc(s).short).join(', ')}</dd></div></dl></section>
 <section class="sec wrap"><div class="split top">
   <div class="stack-lg"><div class="stack"><p class="eyebrow">The brief</p><p class="lede">${c.brief}</p></div><div class="stack"><p class="eyebrow">What Vanguard delivered</p><p class="body">${c.did}</p></div></div>
@@ -871,9 +978,10 @@ ${c.slug==='esports-world-cup'?`
   <div class="stack"><p class="eyebrow">Also in 2024</p><h2 class="d h2">The trophy ceremony.</h2><p class="body">Vanguard delivered the 2024 Trophy Awarding Ceremony, where the champions were crowned by His Royal Highness Crown Prince Mohammed bin Salman. The ceremony closed weeks of global competition.</p></div>
   <ul class="scope">${['Masterplanning and experience design','Ceremony content and screen media production','Guest journey, F&amp;B and seating strategy','Venue design and fit-out','Invitations, communication and protocol management','Logistics, access and safety operations'].map(x=>`<li><span>${x}</span></li>`).join('')}</ul>
 </div></section>`:''}
-<section class="sec wrap"><p class="eyebrow" style="margin-block-end:24px">Gallery</p><div class="gallery">${c.gal.map(g=>`<figure>${img(g[0],g[1])}</figure>`).join('')}</div></section>
+<section class="sec wrap"><p class="eyebrow" style="margin-block-end:24px">Gallery</p><div class="gallery">${c.gal.map((g,k)=>`<figure tabindex="0" role="button" aria-label="Open picture: ${g[1]}" data-lb="${k}">${img(g[0],g[1])}<figcaption><span class="glyph"></span>${g[1]}</figcaption></figure>`).join('')}</div></section>
 <section class="sec wrap">${fpo(`Client quote from ${c.client.split(',')[0].split(' and ')[0]}, and event film if cleared for use.`)}</section>
-<section class="wrap" style="padding-block-end:var(--sec)"><a class="svc-row" href="#${next.slug}" data-peek="${next.img||next.hero||''}" style="border-block-start:1px solid var(--line)"><span class="n">Next</span><h3 class="d h3">${next.title}</h3><p>${next.outcome}</p>${arrow}</a></section>
+<div style="block-size:var(--sec)"></div>
+${nextCase(next)}
 ${closing()}`}
 
 const PART=[
@@ -922,8 +1030,7 @@ ${head('Insights','The Saudi and MENA market, from the inside.','News, event rec
 ${closing()}`;
 
 P.careers=()=>`
-${head('Careers','Join the team behind the Kingdom’s biggest gaming moments.','Strategists, operators, producers and creators who turn complex ideas into events that run on time.','','الوظائف')}
-<div class="wide-img slot">${img('wec-teams','Crew and teams on the floor at WEC24',1)}</div>
+${phero('wec-teams','Crew and teams on the floor at WEC24','Careers','Join the team behind the Kingdom’s biggest gaming moments.','Strategists, operators, producers and creators who turn complex ideas into events that run on time.','','الوظائف')}
 <section class="sec wrap"><div class="split top">
   <div class="stack"><p class="eyebrow">What we believe in</p><h2 class="d h2">Five things we hold every project to.</h2></div>
   <ul class="scope">
@@ -968,14 +1075,14 @@ let lang='en',heroTimer=null,ringTimer=null,ringUser=false,isHome=false,io=null,
 const still=window.matchMedia('(prefers-reduced-motion: reduce)'),fine=window.matchMedia('(hover:hover) and (pointer:fine)'),peek=document.getElementById('peek');
 try{lang=localStorage.getItem('vg-lang')||'en'}catch(e){}
 function route(){
-  const h=(location.hash||'#home').slice(1);
+  const h=here();
   let html,top=h;
   if(P[h]) html=P[h]();
   else if(svc(h)){html=servicePage(svc(h));top='services'}
   else if(cs(h)){html=casePage(cs(h));top='work'}
   else {html=P.home();top='home'}
-  main.innerHTML=html;isHome=top==='home';
-  document.querySelectorAll('.nav a.nl').forEach(a=>{a.getAttribute('href')==='#'+top?a.setAttribute('aria-current','page'):a.removeAttribute('aria-current')});
+  main.innerHTML=html;isHome=top==='home';relink(main);setMeta(h);closeLb();
+  document.querySelectorAll('.nav a.nl').forEach(a=>{a.getAttribute('href')===path(top)?a.setAttribute('aria-current','page'):a.removeAttribute('aria-current')});
   nav.classList.remove('open');document.getElementById('burger').setAttribute('aria-expanded','false');
   main.querySelectorAll('.ring').forEach(r=>setRing(r,0));
   /* The ring steps through the services by itself until someone takes over. */
@@ -990,7 +1097,7 @@ function setRing(r,i){
   r.querySelectorAll('.rn').forEach((b,k)=>{b.setAttribute('aria-pressed',k===i);b.classList.toggle('done',k<i)});
   r.querySelector('.ring-arc').style.strokeDasharray=`${i} 7`;
   const p=r.closest('.sys').querySelector('.panel');
-  if(p&&p.dataset.i!==String(i)){p.dataset.i=i;p.innerHTML=panel(i);applyLang(p)}
+  if(p&&p.dataset.i!==String(i)){p.dataset.i=i;p.innerHTML=panel(i);applyLang(p);relink(p)}
 }
 function applyLang(root){
   const ar=lang==='ar';
@@ -1002,15 +1109,17 @@ function applyLang(root){
 /* The header sits clear over the home hero and turns solid once the page scrolls. */
 function navState(){nav.classList.toggle('clear',isHome&&lang!=='ar'&&window.scrollY<24)}
 /* Sections rise in as they enter the viewport; headline figures count up once. */
-const RV='.trust,.sec-head,.nums-lead,.nums-list li,.nums-foot,.sys,.svc-rows > li,.space-row > *,.voice > *,.ilist li,.close-in > *,.split > *,.tl li,.how > div,.people > li,.tbl-wrap,.box,.card,.filters,.facts,.results > div,.gallery figure,.plist li,section > .fpo,.wrap > .fpo';
+const RV='.trust,.sec-head,.nums-lead,.nums-list li,.nums-foot,.sys,.svc-rows > li,.space-row > *,.voice > *,.ilist li,.close-in > :not(h2),.split > *,.tl li,.how > div,.people > li,.tbl-wrap,.box,.grid3 > .card,.nextc-in > *,.filters,.facts,.results > div,.gallery figure,.plist li,section > .fpo,.wrap > .fpo';
 function motion(){
   if(io)io.disconnect();
   if(!('IntersectionObserver' in window)||still.matches)return;
   io=new IntersectionObserver(es=>{let k=0;es.forEach(e=>{if(!e.isIntersecting)return;const el=e.target,d=Math.min(k++,6)*70;io.unobserve(el);
+    if(el.classList.contains('lr')){el.classList.add('in');return}
     el.style.transitionDelay=d+'ms';el.classList.add('in');setTimeout(()=>countUp(el),d);
     setTimeout(()=>{el.classList.remove('rv','rv-slot','in');el.style.transitionDelay=''},d+(el.classList.contains('rv-slot')?1800:950))})},{rootMargin:'0px 0px -7% 0px'});
   main.querySelectorAll(RV).forEach(el=>{el.classList.add('rv');io.observe(el)});
   main.querySelectorAll('.wide-img.slot').forEach(el=>{el.classList.add('rv-slot');io.observe(el)});
+  main.querySelectorAll('[data-lr]').forEach(el=>{el.classList.add('lr');io.observe(el)});
 }
 function countUp(root){
   root.querySelectorAll('.nums-giant .num,.nums-list .num,.results .num').forEach(n=>{
@@ -1036,7 +1145,7 @@ function startHero(){
     const prev=imgs[k];prev.classList.remove('on');prev.classList.add('was');ticks[k].classList.remove('on');ticks[k].classList.add('done');
     k=(k+1)%imgs.length;if(!k)ticks.forEach(t=>t.classList.remove('done'));
     imgs[k].classList.add('on');ticks[k].classList.add('on');
-    cap.lastElementChild.textContent=SLIDES[k][1];cap.href='#'+SLIDES[k][2];num.textContent='0'+(k+1);
+    cap.lastElementChild.textContent=SLIDES[k][1];cap.href=path(SLIDES[k][2]);num.textContent='0'+(k+1);
     setTimeout(()=>prev.classList.remove('was'),1600);
   },6500);
 }
@@ -1049,7 +1158,7 @@ function go(){
 }
 function onScroll(){
   navState();peek.classList.remove('on');
-  const m=main.querySelector('.hero-media');
+  const m=main.querySelector('.hero-media,.phero-media');
   if(m&&!still.matches&&window.scrollY<window.innerHeight*1.3)m.style.transform=`translate3d(0,${(window.scrollY*.24).toFixed(1)}px,0)`;
 }
 /* A picture follows the pointer over rows that carry one. */
@@ -1067,24 +1176,47 @@ document.addEventListener('mousemove',e=>{
   if(!praf)praf=requestAnimationFrame(peekLoop);
 },{passive:true});
 function bizFields(){const t=document.getElementById('c-type');if(!t)return;main.querySelectorAll('[data-biz]').forEach(l=>l.hidden=t.value!=='Business')}
-function fakeSend(form,out,need){
+/* Enquiries open the visitor's own email app, addressed and filled in. */
+function sendForm(form,out,need,subject){
   for(const id of need){const el=document.getElementById(id);if(!el.value.trim()||(el.type==='email'&&!/^\S+@\S+\.\S+$/.test(el.value))){out.innerHTML=`<p class="f-note">Add ${el.type==='email'?'a valid email address':'your name'} so we can reply.</p>`;el.focus();return}}
-  out.innerHTML='<p class="f-done">This build is a prototype, so nothing was sent. On the live site this confirms the enquiry and promises a reply within one business day. Until then, write to hello@vanguard7.com.</p>';
+  const rows=[...form.querySelectorAll('label')].filter(l=>!l.hidden).map(l=>{const f=l.querySelector('input,select,textarea'),v=f?f.value.trim():'';return v?`${l.firstChild.textContent.trim()}: ${v}`:''}).filter(Boolean);
+  location.href=`mailto:hello@vanguard7.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(rows.join('\n'))}`;
+  out.innerHTML='<p class="f-done">Your email app should now be open with this enquiry filled in and addressed to hello@vanguard7.com. Press send there to deliver it. If nothing opened, write to us at that address.</p>';
 }
+/* Gallery viewer */
+const lb=document.getElementById('lb');let lbList=[],lbK=0,lbFrom=null;
+function showLb(k){lbK=(k+lbList.length)%lbList.length;const g=lbList[lbK],im=document.getElementById('lbImg');im.src=g.src;im.alt=g.alt;document.getElementById('lbC').textContent=g.alt;document.getElementById('lbI').textContent=String(lbK+1).padStart(2,'0');document.getElementById('lbT').textContent=String(lbList.length).padStart(2,'0')}
+function openLb(fig){lbFrom=fig;lbList=[...fig.parentNode.querySelectorAll('img')].map(i=>({src:i.currentSrc||i.src,alt:i.alt}));lb.hidden=false;document.documentElement.style.overflow='hidden';showLb(+fig.dataset.lb);document.getElementById('lbX').focus()}
+function closeLb(){if(lb.hidden)return;lb.hidden=true;document.documentElement.style.overflow='';if(lbFrom&&lbFrom.isConnected)lbFrom.focus();lbFrom=null}
+document.addEventListener('keydown',e=>{
+  if(!lb.hidden){if(e.key==='Escape')closeLb();else if(e.key==='ArrowRight')showLb(lbK+1);else if(e.key==='ArrowLeft')showLb(lbK-1);else if(e.key==='Tab'){const b=[...lb.querySelectorAll('button')],i=b.indexOf(document.activeElement);e.preventDefault();b[(i+(e.shiftKey?-1:1)+b.length)%b.length].focus()}return}
+  const f=e.target.closest&&e.target.closest('[data-lb]');if(f&&(e.key==='Enter'||e.key===' ')){e.preventDefault();openLb(f)}
+});
 document.addEventListener('click',e=>{
-  const t=e.target.closest('[data-enq]');if(t){pendingEnq=t.dataset.enq;if(location.hash==='#contact')route()}
+  const t=e.target.closest('[data-enq]');if(t)pendingEnq=t.dataset.enq;
+  if(e.target.closest('#skip')){e.preventDefault();main.focus();return}
+  const g=e.target.closest('[data-lb]');if(g){openLb(g);return}
+  if(e.target.closest('#lbX')||e.target===lb){closeLb();return}
+  if(e.target.closest('#lbN')){showLb(lbK+1);return}
+  if(e.target.closest('#lbP')){showLb(lbK-1);return}
+  /* Links inside the site change the address without reloading. */
+  const a=e.target.closest('a[href]');
+  if(a&&a.origin===location.origin&&!a.target&&!a.hasAttribute('download')&&e.button===0&&!e.metaKey&&!e.ctrlKey&&!e.shiftKey&&!e.altKey){
+    e.preventDefault();
+    if(a.pathname!==location.pathname){history.pushState(null,'',a.pathname);wf={svc:'all',type:'all'};go()}
+    else if(t)route();else window.scrollTo({top:0,behavior:'smooth'});
+  }
   const n=e.target.closest('.rn');if(n)userRing(n);
   const l=e.target.closest('[data-lang]');if(l){lang=l.dataset.lang;try{localStorage.setItem('vg-lang',lang)}catch(x){}applyLang()}
-  const f=e.target.closest('.fbtn');if(f){const row=f.closest('.frow');wf[row.dataset.f]=f.dataset.v;row.querySelectorAll('.fbtn').forEach(b=>b.setAttribute('aria-pressed',b===f));document.getElementById('workGrid').innerHTML=workGrid()}
+  const f=e.target.closest('.fbtn');if(f){const row=f.closest('.frow');wf[row.dataset.f]=f.dataset.v;row.querySelectorAll('.fbtn').forEach(b=>b.setAttribute('aria-pressed',b===f));const wg=document.getElementById('workGrid');wg.innerHTML=workGrid();relink(wg)}
   if(e.target.closest('#burger')){const o=nav.classList.toggle('open');document.getElementById('burger').setAttribute('aria-expanded',o)}
-  if(e.target.closest('#skip')){e.preventDefault();main.focus()}
 });
 document.addEventListener('mouseover',e=>{const n=e.target.closest('.rn');if(n)userRing(n)});
 document.addEventListener('focusin',e=>{const n=e.target.closest('.rn');if(n)userRing(n)});
 document.addEventListener('change',e=>{if(e.target.id==='c-type')bizFields()});
 document.addEventListener('submit',e=>{e.preventDefault();
-  if(e.target.id==='contactForm')fakeSend(e.target,document.getElementById('contactOut'),['c-name','c-email']);
-  if(e.target.id==='spaceForm')fakeSend(e.target,document.getElementById('spaceOut'),['sp-name','sp-email']);
+  if(e.target.id==='contactForm')sendForm(e.target,document.getElementById('contactOut'),['c-name','c-email'],`Website enquiry (${document.getElementById('c-type').value}): ${document.getElementById('c-subj').value.trim()||document.getElementById('c-name').value.trim()}`);
+  if(e.target.id==='spaceForm')sendForm(e.target,document.getElementById('spaceOut'),['sp-name','sp-email'],`Space booking: ${document.getElementById('sp-space').value}`);
 });
 /* Balance logos of different shapes: wide wordmarks sit lower, compact marks taller. */
 document.addEventListener('load',e=>{const im=e.target;if(!im.dataset||!im.dataset.logo||!im.naturalWidth)return;
@@ -1092,8 +1224,10 @@ document.addEventListener('load',e=>{const im=e.target;if(!im.dataset||!im.datas
 document.addEventListener('error',e=>{const im=e.target;if(!im.dataset||!im.dataset.logo)return;
   if(im.src.endsWith('.svg')){im.src=`img/logos/${im.dataset.logo}.png`}else{im.closest('.lg').classList.add('txt')}},true);
 window.addEventListener('scroll',onScroll,{passive:true});
-window.addEventListener('hashchange',()=>{wf={svc:'all',type:'all'};go()});
-route();
+window.addEventListener('popstate',()=>{wf={svc:'all',type:'all'};go()});
+/* Old #page links still land on the right page. */
+if(location.hash.length>1&&here()==='home')history.replaceState(null,'',path(location.hash.slice(1)));
+relink();route();
 </script>
 </body>
 </html>
