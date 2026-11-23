@@ -433,6 +433,30 @@ th,td{text-align:start;padding:13px 16px 13px 0;border-block-end:1px solid var(-
 th{font-family:var(--display);font-weight:600;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
 td.tc{color:var(--mute)}
 
+/* Figures by event: one row per event, each figure in its own column so they line up down the page */
+.figs{border-block-start:1px solid var(--line)}
+.fig-row{position:relative;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,4fr) auto;gap:16px clamp(20px,3vw,48px);align-items:start;padding-block:clamp(20px,2.3vw,30px);border-block-end:1px solid var(--line);transition:background .25s}
+.fig-row:hover{background:rgba(244,240,234,.035)}
+.fig-ev{display:flex;flex-direction:column;gap:6px}
+.fig-ev a{font-family:var(--display);font-stretch:112%;font-weight:700;font-size:1.05rem;line-height:1.25;text-wrap:balance}
+.fig-ev a::after{content:"";position:absolute;inset:0}
+.fig-ev span{color:var(--mute);font-size:.82rem}
+.fig-set{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px clamp(16px,2vw,32px)}
+.fig-set > div{display:flex;flex-direction:column-reverse;justify-content:flex-end;gap:7px}
+.fig-set dd{font-size:clamp(1.2rem,1.9vw,1.65rem);white-space:nowrap}
+.fig-set dd i{font-style:normal;color:var(--red)}
+.fig-set dt{color:var(--mute);font-size:.82rem;line-height:1.3}
+.fig-row > .arrow{color:var(--mute);padding-block-start:4px;transition:transform .2s,color .2s}
+.fig-row:hover > .arrow{color:var(--red);transform:translateX(4px)}
+[dir=rtl] .fig-row:hover > .arrow{transform:scaleX(-1) translateX(4px)}
+@media (max-width:1000px){
+  .fig-row{grid-template-columns:minmax(0,1fr) auto}
+  .fig-ev{flex-direction:row;flex-wrap:wrap;align-items:baseline;gap:4px 12px}
+  .fig-set{grid-column:1 / -1;grid-row:2}
+  .fig-set dd{font-size:clamp(1.05rem,5.6vw,1.3rem)}
+}
+@media (max-width:720px){.fig-set{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
 /* People */
 .people{display:grid;grid-template-columns:repeat(6,1fr);gap:clamp(10px,1.4vw,20px)}
 @media (max-width:1000px){.people{grid-template-columns:repeat(3,1fr)}}
@@ -912,9 +936,7 @@ ${phero('arena-figure','Vanguard brand artwork: a figure standing in an arena','
 <section class="sec wrap"><div class="sec-head"><div><p class="eyebrow">Leadership</p><h2 class="d h2">Saudi leadership. International experience.</h2></div><span class="tag tag-q">Short bios to supply</span></div>${people(LEAD)}</section>
 <section class="sec wrap"><div class="sec-head"><div><p class="eyebrow">Core team</p><h2 class="d h2">The people who run the day.</h2></div></div>${people(CORE)}</section>
 <section class="sec wrap"><div class="sec-head"><div><p class="eyebrow">Vanguard in numbers</p><h2 class="d h2">Every figure, by event.</h2></div></div>
-  <div class="tbl-wrap"><table><thead><tr><th>Event</th><th>Edition</th><th>Figures</th></tr></thead><tbody>
-  ${C.map(c=>`<tr><td><a href="#${c.slug}" style="border-block-end:1px solid var(--red)">${c.title}</a></td><td class="tc">${c.note?c.note.replace('Figures reflect the ','').replace(' edition.',''):(c.slug==='ignite'?'':c.years)}</td><td>${c.results.map(r=>`<span class="num" style="font-size:1rem">${r[0]}</span> <span class="mute">${r[1].toLowerCase()}</span>`).join(' &nbsp;·&nbsp; ')}</td></tr>`).join('')}
-  </tbody></table></div>
+  <ul class="figs">${C.map(c=>{const y=(c.note||c.years).match(/\d{4}/g);return `<li class="fig-row"><div class="fig-ev"><a href="#${c.slug}">${c.title}</a>${y&&!c.title.includes(y[y.length-1])?`<span>${y[y.length-1]}</span>`:''}</div><dl class="fig-set">${c.results.map(r=>`<div><dt>${r[1]}</dt><dd class="num">${r[0].replace(/\+$/,'<i>+</i>')}</dd></div>`).join('')}</dl>${arrow}</li>`}).join('')}</ul>
 </section>
 <section class="sec wrap"><div class="sec-head"><div><p class="eyebrow">Community</p><h2 class="d h2">What we put back.</h2></div></div>
   <div class="grid2">
@@ -1112,7 +1134,7 @@ function applyLang(root){
 /* The header sits clear over the home hero and turns solid once the page scrolls. */
 function navState(){nav.classList.toggle('clear',isHome&&lang!=='ar'&&window.scrollY<24)}
 /* Sections rise in as they enter the viewport; headline figures count up once. */
-const RV='.trust,.sec-head,.nums-lead,.nums-list li,.nums-foot,.sys,.svc-rows > li,.space-row > *,.voice > *,.ilist li,.close-in > :not(h2),.split > *,.tl li,.how > div,.people > li,.tbl-wrap,.box,.grid3 > .card,.nextc-in > *,.filters,.facts,.results > div,.gallery figure,.plist li,section > .fpo,.wrap > .fpo';
+const RV='.trust,.sec-head,.nums-lead,.nums-list li,.nums-foot,.sys,.svc-rows > li,.space-row > *,.voice > *,.ilist li,.close-in > :not(h2),.split > *,.tl li,.how > div,.people > li,.tbl-wrap,.fig-row,.box,.grid3 > .card,.nextc-in > *,.filters,.facts,.results > div,.gallery figure,.plist li,section > .fpo,.wrap > .fpo';
 function motion(){
   if(io)io.disconnect();
   if(!('IntersectionObserver' in window)||still.matches)return;
