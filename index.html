@@ -81,6 +81,8 @@ ul,ol{list-style:none}
 .num{font-family:var(--display);font-stretch:125%;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-.02em;line-height:1}
 :lang(ar) .d,:lang(ar) .eyebrow,:lang(ar) .btn,:lang(ar) .nav a{font-family:var(--body);letter-spacing:0;font-stretch:100%}
 :lang(ar) .d{line-height:1.25;font-weight:700}
+/* On the narrowest phones a single long word at full width is wider than the column ("INTERNATIONAL", "CHAMPIONSHIP"), so headings drop to normal width there. */
+@media (max-width:359px){.d{font-stretch:100%}}
 
 /* Buttons */
 .btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--display);font-stretch:112%;font-weight:700;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;padding:16px 24px;border:1px solid var(--bone);background:transparent;cursor:pointer;transition:background .2s,color .2s,border-color .2s;white-space:nowrap}
